@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favicon Generator</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background: #f0f0f0;
+        }
+        .container { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .logo-preview {
+            width: 32px;
+            height: 32px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #5a6fd8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 AI健康助手 Favicon 生成器</h1>
+        
+        <div class="instructions">
+            <h3>使用说明：</h3>
+            <ol>
+                <li>点击下方按钮生成32x32像素的favicon预览</li>
+                <li>右键点击预览图选择"另存为"保存为favicon.png</li>
+                <li>使用在线工具将PNG转换为ICO格式</li>
+                <li>将生成的favicon.ico文件放在public目录下</li>
+            </ol>
+        </div>
+
+        <h3>Logo预览：</h3>
+        <canvas id="logoCanvas" width="32" height="32" class="logo-preview"></canvas>
+        
+        <div>
+            <button onclick="generateFavicon()">生成Favicon</button>
+            <button onclick="downloadPNG()">下载PNG</button>
+        </div>
+
+        <h3>推荐在线转换工具：</h3>
+        <ul>
+            <li><a href="https://convertio.co/png-ico/" target="_blank">Convertio PNG转ICO</a></li>
+            <li><a href="https://www.icoconverter.com/" target="_blank">ICO Converter</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function generateFavicon() {
+            const canvas = document.getElementById('logoCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // 清空画布
+            ctx.clearRect(0, 0, 32, 32);
+            
+            // 绘制背景圆
+            const gradient = ctx.createLinearGradient(0, 0, 32, 32);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            
+            ctx.beginPath();
+            ctx.arc(16, 16, 14, 0, 2 * Math.PI);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            
+            // 绘制简化的心形
+            ctx.beginPath();
+            ctx.moveTo(16, 10);
+            ctx.bezierCurveTo(14, 8, 10, 8, 8, 10);
+            ctx.bezierCurveTo(6, 12, 6, 16, 8, 18);
+            ctx.lineTo(16, 24);
+            ctx.lineTo(24, 18);
+            ctx.bezierCurveTo(26, 16, 26, 12, 24, 10);
+            ctx.bezierCurveTo(22, 8, 18, 8, 16, 10);
+            ctx.closePath();
+            
+            const heartGradient = ctx.createLinearGradient(8, 10, 24, 18);
+            heartGradient.addColorStop(0, '#ff6b6b');
+            heartGradient.addColorStop(1, '#ff8e8e');
+            
+            ctx.fillStyle = heartGradient;
+            ctx.fill();
+            
+            // 绘制AI元素（简单线条）
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(13, 14);
+            ctx.lineTo(19, 14);
+            ctx.moveTo(16, 11);
+            ctx.lineTo(16, 17);
+            ctx.stroke();
+        }
+        
+        function downloadPNG() {
+            const canvas = document.getElementById('logoCanvas');
+            const link = document.createElement('a');
+            link.download = 'favicon.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // 页面加载时自动生成
+        window.onload = generateFavicon;
+    </script>
+</body>
+</html>
