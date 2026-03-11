@@ -128,9 +128,9 @@
             <h3>您好！我是您的 AI 营养师</h3>
             <p>我可以为您提供专业的饮食建议和营养分析</p>
             <div class="quick-actions">
-              <div class="action-item">🥗 减脂饮食规划</div>
-              <div class="action-item">💪 增肌营养搭配</div>
-              <div class="action-item">🍎 控糖饮食建议</div>
+              <div class="action-item" @click="handleQuickAction('减脂饮食规划')">🥗 减脂饮食规划</div>
+              <div class="action-item" @click="handleQuickAction('增肌营养搭配')">💪 增肌营养搭配</div>
+              <div class="action-item" @click="handleQuickAction('控糖饮食建议')">🍎 控糖饮食建议</div>
             </div>
           </div>
         </div>
@@ -281,12 +281,20 @@ const locateMessage = (index) => {
     const messageEl = document.getElementById(`message-${index}`)
     if (messageEl) {
       messageEl.scrollIntoView({ behavior: 'smooth', block: 'center' })
-      // 3秒后取消高亮
+      // 3 秒后取消高亮
       setTimeout(() => {
         highlightedIndex.value = -1
       }, 3000)
     }
   })
+}
+
+// 处理快速操作按钮点击
+const handleQuickAction = (action) => {
+  console.log('快速操作被点击:', action)
+  // 将快速操作的内容填充到输入框并自动发送
+  inputText.value = `请为我提供${action}的专业建议`
+  sendMessage()
 }
 
 // 发送消息

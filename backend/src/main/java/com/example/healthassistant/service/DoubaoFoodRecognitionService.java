@@ -41,11 +41,11 @@ public class DoubaoFoodRecognitionService {
     private static final int RETRY_INTERVAL_MS = 2000;
 
     /**
-     * 初始化豆包AI服务
+     * 初始化豆包 AI 服务
      */
     private void initializeDoubaoService() {
         if (apiKey == null || apiKey.isEmpty()) {
-            throw new RuntimeException("未配置豆包API密钥，请在application.properties中设置doubao.api.key");
+            throw new RuntimeException("未配置豆包 API 密钥，请在 application.properties 中设置 doubao.api.key");
         }
 
         if (arkService == null) {
@@ -97,17 +97,17 @@ public class DoubaoFoodRecognitionService {
     }
 
     /**
-     * 使用豆包AI识别食物并获取营养信息
-     * 如果没有配置API Key，自动切换到本地识别模式
+     * 使用豆包 AI 识别食物并获取营养信息
+     * 如果没有配置 API Key，自动切换到本地识别模式
      */
     public List<FoodNutrition> recognizeFoodWithDoubao(String foodDescription) {
         List<FoodNutrition> results = new ArrayList<>();
 
-        // 检查API密钥配置，如果没有配置则使用本地识别模式
+        // 检查 API 密钥配置，如果没有配置则使用本地识别模式
         if (apiKey == null || apiKey.isEmpty()) {
             System.out.println("==============================================");
-            System.out.println("豆包API密钥未配置，切换到本地演示模式");
-            System.out.println("提示：如需使用真实AI服务，请在application.properties中设置doubao.api.key");
+            System.out.println("豆包 API 密钥未配置，切换到本地演示模式");
+            System.out.println("提示：如需使用真实 AI 服务，请在 application.properties 中设置 doubao.api.key");
             System.out.println("==============================================");
             return recognizeLocally(foodDescription);
         }

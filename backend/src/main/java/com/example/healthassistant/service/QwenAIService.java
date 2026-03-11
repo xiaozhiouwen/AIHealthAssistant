@@ -47,22 +47,22 @@ public class QwenAIService {
     private static final int MAX_HISTORY_LENGTH = 1000;
 
     public String getNutritionAdvice(String userId, String userMessage) {
-        System.out.println("正在调用AI服务，用户ID: " + userId + ", 用户消息: " + userMessage);
-
-        // 检查API密钥是否配置，优先读取配置文件，其次读取环境变量
+        System.out.println("正在调用 AI 服务，用户 ID: " + userId + ", 用户消息：" + userMessage);
+    
+        // 检查 API 密钥是否配置，优先读取配置文件，其次读取环境变量
         String apiKey = configApiKey;
         if (apiKey == null || apiKey.isEmpty()) {
             apiKey = System.getenv("DASHSCOPE_API_KEY");
         }
-
+    
         if (apiKey == null || apiKey.isEmpty()) {
             System.out.println("==============================================");
-            System.out.println("通义千问API密钥未配置，切换到本地演示模式");
-            System.out.println("提示：如需使用真实AI服务，请在application.properties中设置qwen.api.key");
+            System.out.println("通义千问 API 密钥未配置，切换到本地演示模式");
+            System.out.println("提示：如需使用真实 AI 服务，请在 application.properties 中设置 qwen.api.key");
             System.out.println("==============================================");
             return generateMockResponse(userMessage);
         }
-
+    
         try {
             // 获取用户档案信息
             UserProfile userProfile = userProfileRepository.findByUserId(userId);
@@ -149,9 +149,9 @@ public class QwenAIService {
         if (effectiveApiKey == null || effectiveApiKey.isEmpty()) {
             effectiveApiKey = System.getenv("DASHSCOPE_API_KEY");
         }
-
+    
         if (effectiveApiKey == null || effectiveApiKey.isEmpty()) {
-            System.out.println("通义千问API密钥未配置，使用模拟食谱推荐");
+            System.out.println("通义千问 API 密钥未配置，使用模拟食谱推荐");
             return generateMockRecommendations(userProfile, mealType);
         }
 

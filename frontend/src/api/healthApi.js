@@ -364,18 +364,18 @@ export const healthApi = {
             const response = await api.get('/status/api-availability');
             return response.data;
         } catch (error) {
-            console.error('获取API状态失败:', error);
-            // 当API调用失败时，返回默认状态
+            console.error('获取 API 状态失败:', error);
+            // 当后端服务不可用时，返回不可用状态
             return {
                 qwen: {
-                    available: true,
-                    message: 'API 可用',
-                    hasApiKey: true
+                    available: false,
+                    message: '后端服务不可用',
+                    hasApiKey: false
                 },
                 doubao: {
-                    available: true,
-                    message: 'API 可用',
-                    hasApiKey: true
+                    available: false,
+                    message: '后端服务不可用',
+                    hasApiKey: false
                 }
             };
         }

@@ -71,7 +71,7 @@ public class UserProfile {
     private String phone; // 手机号码
     
     @Column(name = "avatar_url", length = 500)
-    private String avatarUrl; // 头像URL
+    private String avatarUrl; // 头像 URL
     
     @Column(name = "last_login_time")
     private LocalDateTime lastLoginTime; // 最后登录时间
@@ -145,7 +145,7 @@ public class UserProfile {
     
     public String getAvatarUrl() { return avatarUrl; }
     public void setAvatarUrl(String avatarUrl) { this.avatarUrl = avatarUrl; }
-    
+        
     public LocalDateTime getLastLoginTime() { return lastLoginTime; }
     public void setLastLoginTime(LocalDateTime lastLoginTime) { this.lastLoginTime = lastLoginTime; }
     
