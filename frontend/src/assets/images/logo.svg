@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- 背景圆形渐变 -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#667eea" />
+      <stop offset="100%" stop-color="#764ba2" />
+    </linearGradient>
+    <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b6b" />
+      <stop offset="100%" stop-color="#ff8e8e" />
+    </linearGradient>
+    <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ecdc4" />
+      <stop offset="100%" stop-color="#44a08d" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 主背景圆 -->
+  <circle cx="100" cy="100" r="95" fill="url(#bgGradient)" />
+
+  <!-- 外圈装饰环 -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="white" stroke-width="2" opacity="0.3" />
+
+  <!-- 心脏图标 (健康元素) -->
+  <path d="M100,65 
+           C95,60 85,60 80,65 
+           C75,70 75,80 80,85 
+           L100,105 
+           L120,85 
+           C125,80 125,70 120,65 
+           C115,60 105,60 100,65 Z" 
+        fill="url(#heartGradient)" filter="url(#glow)" />
+
+  <!-- 大脑轮廓 (AI智能元素) -->
+  <path d="M85,90 
+           Q80,85 82,80 
+           Q85,75 90,75 
+           Q95,75 98,78 
+           Q102,75 105,75 
+           Q110,75 113,80 
+           Q115,85 110,90 
+           Q105,95 100,95 
+           Q95,95 85,90 Z" 
+        fill="url(#brainGradient)" stroke="white" stroke-width="1" />
+
+  <!-- 连接线 (表示AI与健康的连接) -->
+  <path d="M100,110 L100,125" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.7" />
+  <circle cx="100" cy="130" r="3" fill="white" opacity="0.8" />
+
+  <!-- 数据点阵 (科技感元素) -->
+  <circle cx="70" cy="70" r="2" fill="white" opacity="0.6" />
+  <circle cx="130" cy="70" r="2" fill="white" opacity="0.6" />
+  <circle cx="70" cy="130" r="2" fill="white" opacity="0.6" />
+  <circle cx="130" cy="130" r="2" fill="white" opacity="0.6" />
+  <circle cx="85" cy="55" r="1.5" fill="white" opacity="0.5" />
+  <circle cx="115" cy="55" r="1.5" fill="white" opacity="0.5" />
+  <circle cx="85" cy="145" r="1.5" fill="white" opacity="0.5" />
+  <circle cx="115" cy="145" r="1.5" fill="white" opacity="0.5" />
+
+  <!-- AI芯片电路图案 -->
+  <path d="M90,140 L110,140" stroke="white" stroke-width="1" opacity="0.4" />
+  <path d="M95,135 L95,145" stroke="white" stroke-width="1" opacity="0.4" />
+  <path d="M105,135 L105,145" stroke="white" stroke-width="1" opacity="0.4" />
+
+  <!-- 文字标识 -->
+  <text x="100" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">
+    AI健康助手
+  </text>
+  <text x="100" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" opacity="0.8">
+    Health Assistant
+  </text>
+
+  <!-- 动态光效 (可选动画效果) -->
+  <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite" />
+</svg>

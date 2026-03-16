@@ -1,0 +1,20 @@
+@import './assets/styles/base.css';
+
+/* 应用根样式 */
+#app {
+  min-height: 100vh;
+  background-color: var(--light-gray);
+}
+
+/* 链接样式 */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
